@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>Mô phỏng minh họa điều phối tiến trình</h1>
+            <div>
+                <button id="open" class="btn">Config</button>
+                <button id="start" class="btn">Start</button>
+            </div>
+        </div>
+        <div class="display">
+            <div class="simulation" id="simulation"></div>
+        </div>
+        <div class="slider">
+            <div>
+                <input id="slider-input" class="slider-input" type="range" step="1">
+            </div>
+        </div>
+    </div>
+
+    <dialog class="dialog" id="dialog">
+        <div class="type">
+            <label for="type">
+                Type:
+                <select name="type" id="type" class="select">
+                    <option class="option" value="fcfs">First Come First Serve (FCFS)</option>
+                    <option class="option" value="sjf">Shortest Job First (SJF)</option>
+                    <option class="option" value="srtf">Shortest Remaining Time First (SRTF)</option>
+                    <option class="option" value="rr">Round Robin (RR)</option>
+                </select>
+            </label>
+        </div>
+        <div id="add-process">
+            <button id="add-btn" class="btn">add</button>
+        </div>
+        <button id="close" class="btn">Close</button>
+    </dialog>
+
+    <script src="./util.js"></script>
+    <script src="./algorithm.js"></script>
+    <script src="./process.js"></script>
+    <script src="./start.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>
