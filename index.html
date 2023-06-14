@@ -13,17 +13,20 @@
     <div class="container">
         <div class="title">
             <h1>Mô phỏng minh họa điều phối tiến trình</h1>
-            <div>
-                <button id="open" class="btn">Config</button>
-                <button id="start" class="btn">Start</button>
-            </div>
+        </div>
+        <div class="control">
+            <button id="config" class="btn">Config</button>
+            <button id="start" class="btn">Start</button>
+            <button id="end" class="btn">Stop</button>
         </div>
         <div class="display">
             <div class="simulation" id="simulation"></div>
+            <div class="queue" id="queue"></div>
+            <div class="time" id="time"></div>
         </div>
-        <div class="slider">
+        <div class="slider-container">
             <div>
-                <input id="slider-input" class="slider-input" type="range" step="1">
+                <input id="slider" class="slider" type="range" step="1">
             </div>
         </div>
     </div>
@@ -40,17 +43,20 @@
                 </select>
             </label>
         </div>
-        <div id="add-process">
-            <button id="add-btn" class="btn">add</button>
+
+        <div class="process" id="process"></div>
+
+        <div class="button">
+            <button id="add" class="btn">Add</button>
+            <button id="close" class="btn">Close</button>
         </div>
-        <button id="close" class="btn">Close</button>
+
     </dialog>
 
-    <script src="./util.js"></script>
-    <script src="./algorithm.js"></script>
-    <script src="./process.js"></script>
-    <script src="./start.js"></script>
-    <script src="./script.js"></script>
+    <script type="module" src="./builder.js"></script>
+    <script type="module" src="./algorithm.js"></script>
+    <script type="module" src="./render.js"></script>
+    <script type="module" src="./main.js"></script>
 </body>
 
 </html>
