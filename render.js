@@ -2,7 +2,14 @@ import { Builder } from "./builder.js";
 
 //Render class is responsible for rendering the simulation
 export class Render {
-    constructor(simulationElement = "#simulation", queueElement = "#queue", timeElement = "#time", algorithm, timeout = 500) {
+    constructor(element, algorithm, timeout = 500) {
+        const {
+            rulerElement = "#ruler",
+            simulationElement = "#simulation",
+            queueElement = "#queue",
+            timeElement = "#time"
+        } = element;
+
         //algorithm is the algorithm that will be used for the simulation
         this._algorithm = algorithm;
 
@@ -13,6 +20,13 @@ export class Render {
         //row is the row of rectangles for each process
         this._row = [];
         this._currentStep = 0;
+
+        //rulerContainer is the element that will be used as a simulation (it must be string or element)
+        if (typeof rulerElement === 'string') {
+            this._rulerContainer = document.querySelector(rulerElement);
+        } else {
+            this._rulerContainer = rulerElement;
+        }
 
         //container is the element that will be used as a simulation (it must be string or element)
         if (typeof simulationElement === 'string') {
@@ -52,6 +66,9 @@ export class Render {
         const totalTime = this._algorithm.totalTime;
         const processes = this._algorithm.cloneProcesses;
 
+        //create the ruler
+        this.createRuler(totalTime);
+
         //create empty rectangles for each process
         for (const process of processes) {
             //create a new row of rectangles
@@ -80,6 +97,8 @@ export class Render {
 
         //add the row to the container
         this._queueContainer.appendChild(this._queueRow);
+
+        //create the ruler
     }
 
     start() {
@@ -128,6 +147,32 @@ export class Render {
         this._queueContainer.innerHTML = '';
         //clear the time
         this.updateTime(0, 0);
+    }
+
+    //create the ruler based on the total time and step
+    createRuler(totalStep, mark = 2) {
+
+        //clear the ruler
+        this._rulerContainer.innerHTML = '';
+
+        //create the new ruler
+        for (let i = 0; i < totalStep; i++) {
+            //if it is the first step, then create a mark ruler
+            if (i % mark === 0) {
+                const ruler = Builder.createMarkRuler();
+                this._rulerContainer.appendChild(ruler);
+            }
+
+            //create a line ruler
+            const ruler = Builder.createLineRuler();
+            this._rulerContainer.appendChild(ruler);
+
+            //if it is the last step, then create a mark ruler
+            if (i === totalStep - 1) {
+                const ruler = Builder.createMarkRuler();
+                this._rulerContainer.appendChild(ruler);
+            }
+        }
     }
 
     updateRow(name, step) {

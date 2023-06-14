@@ -10,8 +10,15 @@ const DEFAULT_TIMEOUT = 300; // set it to change the speed of the simulation
 //create the algorithm instance
 const algorithm = new Algorithm();
 
+// elements = {
+//     rulerElement: "#ruler",
+//     simulationElement: "#simulation",
+//     queueElement: "#queue",
+//     timeElement: "#time"
+// }
+
 //create the render instance and pass the algorithm instance
-const render = new Render('#simulation', '#queue', '#time', algorithm, DEFAULT_TIMEOUT);
+const render = new Render({}, algorithm, DEFAULT_TIMEOUT);
 //create the slider instance and pass the render instance
 const slider = new Slider(render, '#slider')
 

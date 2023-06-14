@@ -83,7 +83,33 @@ html {
     box-sizing: border-box;
 }
 
-.simulation,
+.ruler {
+    width: 100%;
+    height: var(--rect-height);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    margin-bottom: 1rem;
+}
+
+.mark-ruler {
+    height: var(--rect-height);
+
+    flex: 0;
+    border-left: 1px solid var(--primary-color);
+}
+
+.line-ruler {
+    height: var(1);
+
+    flex: 1;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.ruler-and-simulation,
 .queue,
 .time {
     width: 100%;
@@ -92,6 +118,11 @@ html {
     background-color: var(--background-color-neutral);
     box-sizing: border-box;
     border-radius: 1rem;
+}
+
+.simulation {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .row,

@@ -88,6 +88,30 @@ export class Builder {
         //return the div element
         return rect;
     }
+
+    //static create mark ruler
+    static createMarkRuler() {
+        //create the div element
+        const ruler = document.createElement('div');
+
+        //add the classes to the div element
+        ruler.classList.add('mark-ruler');
+
+        //return the div element
+        return ruler;
+    }
+
+    //static create line ruler
+    static createLineRuler() {
+        //create the div element
+        const ruler = document.createElement('div');
+
+        //add the classes to the div element
+        ruler.classList.add('line-ruler');
+
+        //return the div element
+        return ruler;
+    }
 }
 
 export class DialogBuilder {
