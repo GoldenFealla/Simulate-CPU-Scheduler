@@ -1,3 +1,5 @@
+//The Algorithm class is responsible for generate keyframes 
+//based on processes and type 
 export class Algorithm {
     //Constructor for the algorithm class
     constructor(processes) {
